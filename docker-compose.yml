@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    container_name: mysql
+    image: mysql:8.0.33
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234 #추후 문서나 kubernetes secret등으로 민감정보 보관 예정
+      MYSQL_DATABASE: mydatabase
+      TZ: Asia/Seoul
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: first_spring_app
+    volumes:
+      - ./src:/app/src
+      - ./build:/app/build
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/mydatabase?serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    depends_on:
+      - db
+    command: ./gradlew bootRun
+    restart: always

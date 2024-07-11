@@ -1,0 +1,8 @@
+# Ensure consistent line endings
+* text=auto
+
+# Define LF for specific file types
+*.java text eol=lf
+*.properties text eol=lf
+*.md text eol=lf
+*.gradle text eol=lf
