@@ -1,11 +1,14 @@
 package com.study.dbtest.domain.enroll.service;
 
+import com.study.dbtest.domain.enroll.dto.response.StudentCoursesResDto;
 import com.study.dbtest.model.entity.Student;
 import com.study.dbtest.domain.enroll.dto.request.StudentRequestDto;
 import com.study.dbtest.model.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -28,4 +31,8 @@ public class StudentService {
         return id + " is successfully deleted";
     }
 
+    @Transactional
+    public List<StudentCoursesResDto> getCoursesFromStudent(int id) {
+        return studentRepository.findCoursesById(id);
+    }
 }

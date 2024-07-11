@@ -68,7 +68,7 @@ class DbtestApplicationTests {
         Assertions.assertNotNull(resEnroll1);
         System.out.println(resEnroll1);
 
-        List<StudentCoursesResDto> coursesResDtos = enrollmentService.getCoursesFromStudent(1);
+        List<StudentCoursesResDto> coursesResDtos = studentService.getCoursesFromStudent(1);
     }
 
 }

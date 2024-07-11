@@ -10,7 +10,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-@ToString
 public class Enrollment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,5 +23,6 @@ public class Enrollment {
     private Course course;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date enrollmentDate;
 }

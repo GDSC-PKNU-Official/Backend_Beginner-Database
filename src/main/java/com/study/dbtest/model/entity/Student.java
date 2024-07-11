@@ -10,7 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 @Entity
 public class Student {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +19,12 @@ public class Student {
     private String name;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @Column(nullable = false)
     private String email;
 
-//    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
 //    private List<Enrollment> enrollments;
 }

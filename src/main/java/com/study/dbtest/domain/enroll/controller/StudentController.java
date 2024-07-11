@@ -14,8 +14,6 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private StudentService studentService;
-    @Autowired
-    private EnrollmentService enrollmentService;
 
     @PostMapping("/create/students")
     public int addStudent(@RequestBody StudentRequestDto studentRequestDto) {
@@ -34,6 +32,6 @@ public class StudentController {
 
     @GetMapping("/get/students/{id}/courses")
     public List<StudentCoursesResDto> getCoursesFromStudent(@PathVariable int id) {
-        return enrollmentService.getCoursesFromStudent(id);
+        return studentService.getCoursesFromStudent(id);
     }
 }

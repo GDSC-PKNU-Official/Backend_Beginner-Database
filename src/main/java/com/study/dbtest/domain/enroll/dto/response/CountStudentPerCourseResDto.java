@@ -1,7 +1,6 @@
 package com.study.dbtest.domain.enroll.dto.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

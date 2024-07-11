@@ -16,8 +16,6 @@ import java.util.List;
 public class CourseController {
     @Autowired
     private CourseService courseService;
-    @Autowired
-    private EnrollmentService enrollmentService;
 
     @PostMapping("/create/courses")
     public int createCourse(@RequestBody CourseRequestDto courseRequestDto) {
@@ -36,16 +34,16 @@ public class CourseController {
 
     @GetMapping("/get/courses/student-number")
     public List<CountStudentPerCourseResDto> getStudentsNumber(){
-        return enrollmentService.getStudentsPerCourseNumber();
+        return courseService.getStudentsPerCourseNumber();
     }
 
     @GetMapping("/get/courses/same-name-student-number")
     public List<CountStudentWithSameNamePerCourseResDto> getSameNameStudentsNumber() {
-        return enrollmentService.getSameNameStudentsNumber();
+        return courseService.getSameNameStudentsNumber();
     }
 
     @GetMapping("/get/courses/{id}/students")
     public List<StudentsWithCourseResDto> getStudents(@PathVariable int id){
-        return enrollmentService.getStudentsWithCourse(id);
+        return courseService.getStudentsWithCourse(id);
     }
 }

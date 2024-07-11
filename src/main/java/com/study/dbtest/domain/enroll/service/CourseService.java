@@ -1,5 +1,8 @@
 package com.study.dbtest.domain.enroll.service;
 
+import com.study.dbtest.domain.enroll.dto.response.CountStudentPerCourseResDto;
+import com.study.dbtest.domain.enroll.dto.response.CountStudentWithSameNamePerCourseResDto;
+import com.study.dbtest.domain.enroll.dto.response.StudentsWithCourseResDto;
 import com.study.dbtest.model.entity.Course;
 import com.study.dbtest.domain.enroll.dto.request.CourseRequestDto;
 import com.study.dbtest.model.repository.CourseRepository;
@@ -7,6 +10,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -31,5 +35,18 @@ public class CourseService{
         return id + " is successfully deleted";
     }
 
+    @Transactional
+    public List<CountStudentPerCourseResDto> getStudentsPerCourseNumber(){
+        return courseRepository.countStudentPerCourses();
+    }
 
+    @Transactional
+    public List<CountStudentWithSameNamePerCourseResDto> getSameNameStudentsNumber(){
+        return courseRepository.countStudentWithSameNamePerCourses();
+    }
+
+    @Transactional
+    public List<StudentsWithCourseResDto> getStudentsWithCourse(int id){
+        return courseRepository.findStudentsByCourseId(id);
+    }
 }

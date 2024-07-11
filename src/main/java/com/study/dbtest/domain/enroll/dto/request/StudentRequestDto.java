@@ -19,6 +19,7 @@ public class StudentRequestDto {
 
     public Student toEntity(){
         return Student.builder()
+                .id(id)
                 .name(name)
                 .email(email)
                 .birthDate(birthDate)
