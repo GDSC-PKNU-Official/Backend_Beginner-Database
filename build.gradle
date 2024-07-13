@@ -28,7 +28,8 @@ dependencies {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 description = 'GDSC-database'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_19
+
 
 publishing {
     publications {
@@ -45,3 +46,9 @@ tasks.withType(JavaCompile) {
 tasks.withType(Javadoc) {
     options.encoding = 'UTF-8'
 }
+targetCompatibility = JavaVersion.VERSION_19
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-parameters'
+}
+
